@@ -3,30 +3,7 @@ package dictionary
 import (
 	"encoding/xml"
 	"strings"
-
-	"github.com/stscoundrel/old-swedish-dictionary-builder/internal/reader"
 )
-
-var VOL_I_TO_III = "fornsvensk"
-var VOL_IV_TO__V = "fornsvensk-2"
-
-func GetVolumesOneToThree() []DictionaryEntry {
-	bytes := reader.ReadXmlDictionary(VOL_I_TO_III)
-
-	rawEntries := parseRawDictionary(bytes)
-	entries := parseDictionary(rawEntries)
-
-	return entries
-}
-
-func GetVolumesFourToFive() []DictionaryEntry {
-	bytes := reader.ReadXmlDictionary(VOL_IV_TO__V)
-
-	rawEntries := parseRawDictionary(bytes)
-	entries := parseDictionary(rawEntries)
-
-	return entries
-}
 
 func parseRawDictionary(rawDictionary []byte) RawDictionaryEntries {
 	var rawEntries RawDictionaryEntries
@@ -40,6 +17,17 @@ func parseDictionary(rawEntries RawDictionaryEntries) []DictionaryEntry {
 
 	for _, rawEntry := range rawEntries.Entries {
 		entries = append(entries, parseDictionaryEntry(rawEntry))
+	}
+
+	// For writing purposes, convert nil slices to empty slices.
+	for index, entry := range entries {
+		if entry.Definitions == nil {
+			entries[index].Definitions = []string{}
+		}
+
+		if entry.AlternativeForms == nil {
+			entries[index].AlternativeForms = []string{}
+		}
 	}
 
 	return entries
