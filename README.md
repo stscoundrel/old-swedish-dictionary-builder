@@ -2,6 +2,14 @@
 
 Build "Dictionary of Old Swedish" into easier-to-use data formats.
 
+Available formats:
+- JSON
+
+### Usage
+
+Main package exposes `ToJson` function, which generates output files in /build/ directory. Running `main` function generates all outputs.
+
+Using "dictionary" package one can also use the dictionary as in-memory structures.
 
 ### About "Dictionary of Old Swedish"
 
