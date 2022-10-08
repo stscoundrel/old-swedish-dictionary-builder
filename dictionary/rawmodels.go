@@ -2,20 +2,20 @@ package dictionary
 
 import "encoding/xml"
 
-type Feat struct {
+type feat struct {
 	Name  string `xml:"att,attr"`
 	Value string `xml:"val,attr"`
 }
 
-type Sense struct {
-	Prefix     Feat `xml:"feat"`
-	Definition Feat `xml:"Definition>feat"`
+type sense struct {
+	Prefix     feat `xml:"feat"`
+	Definition feat `xml:"Definition>feat"`
 }
 
 type rawDictionaryEntry struct {
-	LemmaFormPresentation []Feat  `xml:"Lemma>FormRepresentation>feat"`
-	WordForm              []Feat  `xml:"WordForm>feat"`
-	Sense                 []Sense `xml:"Sense"`
+	LemmaFormPresentation []feat  `xml:"Lemma>FormRepresentation>feat"`
+	WordForm              []feat  `xml:"WordForm>feat"`
+	Sense                 []sense `xml:"Sense"`
 }
 
 type rawDictionaryEntries struct {
