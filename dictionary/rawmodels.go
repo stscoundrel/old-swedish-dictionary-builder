@@ -12,13 +12,13 @@ type Sense struct {
 	Definition Feat `xml:"Definition>feat"`
 }
 
-type RawDictionaryEntry struct {
+type rawDictionaryEntry struct {
 	LemmaFormPresentation []Feat  `xml:"Lemma>FormRepresentation>feat"`
 	WordForm              []Feat  `xml:"WordForm>feat"`
 	Sense                 []Sense `xml:"Sense"`
 }
 
-type RawDictionaryEntries struct {
+type rawDictionaryEntries struct {
 	XMLName xml.Name             `xml:"LexicalResource"`
-	Entries []RawDictionaryEntry `xml:"Lexicon>LexicalEntry"`
+	Entries []rawDictionaryEntry `xml:"Lexicon>LexicalEntry"`
 }

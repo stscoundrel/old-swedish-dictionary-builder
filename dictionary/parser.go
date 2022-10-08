@@ -5,14 +5,14 @@ import (
 	"strings"
 )
 
-func parseRawDictionary(rawDictionary []byte) RawDictionaryEntries {
-	var rawEntries RawDictionaryEntries
+func parseRawDictionary(rawDictionary []byte) rawDictionaryEntries {
+	var rawEntries rawDictionaryEntries
 	xml.Unmarshal(rawDictionary, &rawEntries)
 
 	return rawEntries
 }
 
-func parseDictionary(rawEntries RawDictionaryEntries) []DictionaryEntry {
+func parseDictionary(rawEntries rawDictionaryEntries) []DictionaryEntry {
 	var entries []DictionaryEntry
 
 	for _, rawEntry := range rawEntries.Entries {
@@ -33,7 +33,7 @@ func parseDictionary(rawEntries RawDictionaryEntries) []DictionaryEntry {
 	return entries
 }
 
-func parseDictionaryEntry(rawEntry RawDictionaryEntry) DictionaryEntry {
+func parseDictionaryEntry(rawEntry rawDictionaryEntry) DictionaryEntry {
 	var entry DictionaryEntry
 
 	for _, feat := range rawEntry.LemmaFormPresentation {
