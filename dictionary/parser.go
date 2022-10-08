@@ -53,9 +53,9 @@ func parseDictionaryEntry(rawEntry RawDictionaryEntry) DictionaryEntry {
 	var definitions []string
 
 	for _, sense := range rawEntry.Sense {
-		if sense.Prefix.Value != "" {
+		if sense.Prefix.Value != "" && sense.Definition.Value != "" {
 			definitions = append(definitions, sense.Prefix.Value+" "+sense.Definition.Value)
-		} else {
+		} else if sense.Definition.Value != "" {
 			definitions = append(definitions, sense.Definition.Value)
 		}
 	}
