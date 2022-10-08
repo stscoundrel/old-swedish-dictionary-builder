@@ -9,5 +9,5 @@ _"Ordbok Öfver svenska medeltids-språket"_ dictionary was published in late 18
 
 The original material is licenced under [Creative Commons International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/), made available by University of Gothenburg. The source code for this library is under MIT licence.
 
-https://spraakbanken.gu.se/en/resources/soederwall
-https://spraakbanken.gu.se/en/resources/soederwall-supp
+- https://spraakbanken.gu.se/en/resources/soederwall
+- https://spraakbanken.gu.se/en/resources/soederwall-supp
