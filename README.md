@@ -5,6 +5,8 @@ Build "Dictionary of Old Swedish" into easier-to-use data formats.
 Available formats:
 - JSON
 
+The data source can be used either in volumes (Vol I - III & vol IV - V) or as a combined dictionary.
+
 ### Usage
 
 Main package exposes `ToJson` function, which generates output files in /build/ directory. Running `main` function generates all outputs.
