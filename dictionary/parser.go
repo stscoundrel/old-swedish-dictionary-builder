@@ -5,6 +5,11 @@ import (
 	"strings"
 )
 
+var searchReplaces = map[string]string{
+	"\u0026quot;": "'",
+	" \u0026":     " &",
+}
+
 func parseRawDictionary(rawDictionary []byte) rawDictionaryEntries {
 	var rawEntries rawDictionaryEntries
 	xml.Unmarshal(rawDictionary, &rawEntries)
@@ -53,11 +58,19 @@ func parseDictionaryEntry(rawEntry rawDictionaryEntry) DictionaryEntry {
 	var definitions []string
 
 	for _, sense := range rawEntry.Sense {
+		definition := ""
 		if sense.Prefix.Value != "" && sense.Definition.Value != "" {
-			definitions = append(definitions, sense.Prefix.Value+" "+sense.Definition.Value)
+			definition = sense.Prefix.Value + " " + sense.Definition.Value
 		} else if sense.Definition.Value != "" {
-			definitions = append(definitions, sense.Definition.Value)
+			definition = sense.Definition.Value
 		}
+
+		// Definitions contain encoded special char. Map them to normal outcomes.
+		for search, replace := range searchReplaces {
+			definition = strings.Replace(definition, search, replace, -1)
+		}
+
+		definitions = append(definitions, definition)
 	}
 
 	entry.Definitions = definitions
@@ -66,7 +79,14 @@ func parseDictionaryEntry(rawEntry rawDictionaryEntry) DictionaryEntry {
 
 	for _, wordForm := range rawEntry.WordForm {
 		if strings.EqualFold(wordForm.Name, "writtenForm") {
-			alternativeForms = append(alternativeForms, wordForm.Value)
+			alternativeForm := wordForm.Value
+
+			for search, replace := range searchReplaces {
+				alternativeForm = strings.Replace(alternativeForm, search, replace, -1)
+			}
+
+			alternativeForms = append(alternativeForms, alternativeForm)
+
 		}
 	}
 
