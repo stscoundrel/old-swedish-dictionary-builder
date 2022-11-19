@@ -35,7 +35,7 @@ func TestDictionariesContainExpectedContent(t *testing.T) {
 		GrammaticalAspect: "pl.",
 		Information:       "",
 		Definitions: []string{
-			"ålderdom.  &quot; tiill aller da[gha] &quot; MD (S) 242 . oppa sina aldher dagha  Lg 3: 650 .",
+			"ålderdom.  \" tiill aller da[gha] \" MD (S) 242 . oppa sina aldher dagha  Lg 3: 650 .",
 		},
 		AlternativeForms: []string{
 			"aller- )",

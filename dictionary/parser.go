@@ -34,6 +34,14 @@ func parseDictionary(rawEntries rawDictionaryEntries) []DictionaryEntry {
 		}
 	}
 
+	// Some formatting tags are encoded in less-than-ideal way.
+	// Search-replace the problematic ones.
+	for idx, entry := range entries {
+		for defIdx, definition := range entry.Definitions {
+			entries[idx].Definitions[defIdx] = strings.Replace(definition, "&quot;", "\"", -1)
+		}
+	}
+
 	return entries
 }
 
