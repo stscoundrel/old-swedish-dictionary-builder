@@ -20,7 +20,7 @@ func TestDictionariesContainExpectedContent(t *testing.T) {
 
 	expected1 := DictionaryEntry{
 		Headword:          "af bränna",
-		PartOfSpeech:      "vb",
+		PartOfSpeech:      []string{"vb"},
 		GrammaticalAspect: "v.",
 		Definitions: []string{
 			"afbränna, genom eld förstöra. hans trähws the af brendhe  RK 2: 2757 . ib 1511. halff stadhen är affbrändh  BSH 5: 132 (  1506) . Jfr bränna af.",
@@ -30,7 +30,7 @@ func TestDictionariesContainExpectedContent(t *testing.T) {
 
 	expected2 := DictionaryEntry{
 		Headword:          "alder daghar",
-		PartOfSpeech:      "nn",
+		PartOfSpeech:      []string{"nn"},
 		GrammaticalAspect: "pl.",
 		Definitions: []string{
 			"ålderdom.  &quot; tiill aller da[gha] &quot; MD (S) 242 . oppa sina aldher dagha  Lg 3: 650 .",
@@ -42,7 +42,7 @@ func TestDictionariesContainExpectedContent(t *testing.T) {
 
 	expected3 := DictionaryEntry{
 		Headword:          "fiädhrdher",
-		PartOfSpeech:      "av",
+		PartOfSpeech:      []string{"av"},
 		GrammaticalAspect: "adj.",
 		Definitions: []string{
 			" Jfr ofiädhradher.",
@@ -52,7 +52,7 @@ func TestDictionariesContainExpectedContent(t *testing.T) {
 
 	expected4 := DictionaryEntry{
 		Headword:          "ängalund",
-		PartOfSpeech:      "",
+		PartOfSpeech:      []string{},
 		GrammaticalAspect: "",
 		Definitions: []string{
 			" , se lund.",

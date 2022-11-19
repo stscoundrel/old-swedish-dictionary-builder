@@ -19,8 +19,11 @@ func debug() {
 
 	for _, entry := range entries {
 		fmt.Println("Headword: " + entry.Headword)
-		fmt.Println("PartOfSpeech: " + entry.PartOfSpeech)
 		fmt.Println("GrammaticalAspect: " + entry.GrammaticalAspect)
+		fmt.Println("PartOfSpeech: ")
+		for _, partOfSpeech := range entry.PartOfSpeech {
+			fmt.Println(partOfSpeech)
+		}
 
 		fmt.Println("Definitions:")
 		for _, definition := range entry.Definitions {
@@ -34,7 +37,7 @@ func debug() {
 
 		fmt.Println("########################")
 
-		if entry.PartOfSpeech == "" {
+		if len(entry.PartOfSpeech) > 0 {
 			hasPartOfSpeech += 1
 		} else {
 			doesNothHavePartOfSpeech += 1
