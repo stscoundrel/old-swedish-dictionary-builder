@@ -12,6 +12,8 @@ func debug() {
 	var doesNothHavePartOfSpeech int = 0
 	var hasGrammaticalAspect int = 0
 	var doesNothHaveGrammaticalAspect int = 0
+	var hasInformation int = 0
+	var doesNotHaveInformation int = 0
 
 	fmt.Println(len(entries1))
 	fmt.Println(len(entries2))
@@ -49,6 +51,12 @@ func debug() {
 			doesNothHaveGrammaticalAspect += 1
 		}
 
+		if entry.Information == "" {
+			hasInformation += 1
+		} else {
+			doesNotHaveInformation += 1
+		}
+
 	}
 
 	fmt.Println("PART OF SPEECH STATS")
@@ -58,4 +66,8 @@ func debug() {
 	fmt.Println("GRAMMATICAL ASPECT STATS")
 	fmt.Println(hasGrammaticalAspect)
 	fmt.Println(doesNothHaveGrammaticalAspect)
+
+	fmt.Println("INFORMATION STATS")
+	fmt.Println(hasInformation)
+	fmt.Println(doesNotHaveInformation)
 }
