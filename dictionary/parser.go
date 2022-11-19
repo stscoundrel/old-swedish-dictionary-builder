@@ -28,6 +28,10 @@ func parseDictionary(rawEntries rawDictionaryEntries) []DictionaryEntry {
 		if entry.AlternativeForms == nil {
 			entries[index].AlternativeForms = []string{}
 		}
+
+		if entry.PartOfSpeech == nil {
+			entries[index].PartOfSpeech = []string{}
+		}
 	}
 
 	return entries
@@ -36,13 +40,15 @@ func parseDictionary(rawEntries rawDictionaryEntries) []DictionaryEntry {
 func parseDictionaryEntry(rawEntry rawDictionaryEntry) DictionaryEntry {
 	var entry DictionaryEntry
 
+	var partsOfSpeech []string
+
 	for _, feat := range rawEntry.LemmaFormPresentation {
 		if strings.EqualFold(feat.Name, "writtenForm") {
 			entry.Headword = feat.Value
 		}
 
 		if strings.EqualFold(feat.Name, "partOfSpeech") {
-			entry.PartOfSpeech = feat.Value
+			partsOfSpeech = append(partsOfSpeech, feat.Value)
 		}
 
 		if strings.EqualFold(feat.Name, "gram") {
@@ -60,8 +66,6 @@ func parseDictionaryEntry(rawEntry rawDictionaryEntry) DictionaryEntry {
 		}
 	}
 
-	entry.Definitions = definitions
-
 	var alternativeForms []string
 
 	for _, wordForm := range rawEntry.WordForm {
@@ -70,6 +74,8 @@ func parseDictionaryEntry(rawEntry rawDictionaryEntry) DictionaryEntry {
 		}
 	}
 
+	entry.PartOfSpeech = partsOfSpeech
+	entry.Definitions = definitions
 	entry.AlternativeForms = alternativeForms
 
 	return entry
