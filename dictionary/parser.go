@@ -54,6 +54,10 @@ func parseDictionaryEntry(rawEntry rawDictionaryEntry) DictionaryEntry {
 		if strings.EqualFold(feat.Name, "gram") {
 			entry.GrammaticalAspect = feat.Value
 		}
+
+		if strings.EqualFold(feat.Name, "information") {
+			entry.Information = feat.Value
+		}
 	}
 
 	var definitions []string
