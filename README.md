@@ -23,3 +23,4 @@ The original material is licenced under [Creative Commons International (CC BY 4
 
 - https://spraakbanken.gu.se/en/resources/soederwall
 - https://spraakbanken.gu.se/en/resources/soederwall-supp
+- https://spraakbanken.gu.se/en/resources/schlyter
