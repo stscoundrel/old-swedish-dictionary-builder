@@ -12,6 +12,7 @@ func TestCreatesJsonBuild(t *testing.T) {
 	_, err1 := os.Stat("./build/old-swedish-dictionary.json")
 	_, err2 := os.Stat("./build/old-swedish-dictionary-vol-i-to-iii.json")
 	_, err3 := os.Stat("./build/old-swedish-dictionary-vol-iv-to-v.json")
+	_, err4 := os.Stat("./build/old-swedish-medieval-law-dictionary.json")
 
 	if errors.Is(err1, os.ErrNotExist) {
 		t.Error("JSON output file not found in build directory for combined dictionary")
@@ -23,5 +24,9 @@ func TestCreatesJsonBuild(t *testing.T) {
 
 	if errors.Is(err3, os.ErrNotExist) {
 		t.Error("JSON output file not found in build directory for Volumes IV to V")
+	}
+
+	if errors.Is(err4, os.ErrNotExist) {
+		t.Error("JSON output file not found in build directory for Schlyters Medieval Law dictionary")
 	}
 }
