@@ -8,6 +8,7 @@ import (
 
 var VOL_I_TO_III = "fornsvensk"
 var VOL_IV_TO__V = "fornsvensk-2"
+var MEDIEVAL_LAW = "schlyter"
 
 func combineDictionaries(first []DictionaryEntry, second []DictionaryEntry) ([]DictionaryEntry, []DictionaryEntry, []DictionaryEntry) {
 	combined := append(first, second...)
@@ -30,6 +31,15 @@ func GetVolumesOneToThree() []DictionaryEntry {
 
 func GetVolumesFourToFive() []DictionaryEntry {
 	bytes := reader.ReadXmlDictionary(VOL_IV_TO__V)
+
+	rawEntries := parseRawDictionary(bytes)
+	entries := parseDictionary(rawEntries)
+
+	return entries
+}
+
+func GetDictionaryOfOldSwedishLaw() []DictionaryEntry {
+	bytes := reader.ReadXmlDictionary(MEDIEVAL_LAW)
 
 	rawEntries := parseRawDictionary(bytes)
 	entries := parseDictionary(rawEntries)

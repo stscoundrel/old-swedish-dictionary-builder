@@ -7,10 +7,12 @@ import (
 
 func ToJson() {
 	combined, first, latter := dictionary.GetOldSwedishDictionary()
+	medievalLaw := dictionary.GetDictionaryOfOldSwedishLaw()
 
 	writer.WriteJson("build/old-swedish-dictionary.json", combined)
 	writer.WriteJson("build/old-swedish-dictionary-vol-i-to-iii.json", first)
 	writer.WriteJson("build/old-swedish-dictionary-vol-iv-to-v.json", latter)
+	writer.WriteJson("build/old-swedish-medieval-law-dictionary.json", medievalLaw)
 }
 
 func main() {
