@@ -4,8 +4,9 @@ Build "Dictionary of Old Swedish" into easier-to-use data formats.
 
 Available formats:
 - JSON
+- DSL
 
-The data source can be used either in volumes (Vol I - III & vol IV - V) or as a combined dictionary.
+The data source can be used either in volumes (Vol I - III & vol IV - V) or as a combined dictionary. Also outputs additional related dictionary of Medieval Swedish law.
 
 ### Usage
 
