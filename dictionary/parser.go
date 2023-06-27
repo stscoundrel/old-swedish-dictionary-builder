@@ -12,6 +12,23 @@ func parseRawDictionary(rawDictionary []byte) rawDictionaryEntries {
 	return rawEntries
 }
 
+func formatMalformatted(entryLine string) string {
+	formatted := entryLine
+	// Search-replace the problematic encoding.
+	formatted = strings.Replace(formatted, "&quot;", "\"", -1)
+
+	// Trim trailing whitespaces & odd period structures.
+	formatted = strings.TrimSpace(formatted)
+
+	// Trim oddly spaced periods.
+	if len(formatted) > 3 && string(formatted[len(formatted)-2:]) == " ." {
+		formatted = strings.TrimRight(formatted, " .")
+		formatted = formatted + "."
+	}
+
+	return formatted
+}
+
 func parseDictionary(rawEntries rawDictionaryEntries) []DictionaryEntry {
 	var entries []DictionaryEntry
 
@@ -35,10 +52,12 @@ func parseDictionary(rawEntries rawDictionaryEntries) []DictionaryEntry {
 	}
 
 	// Some formatting tags are encoded in less-than-ideal way.
-	// Search-replace the problematic ones.
 	for idx, entry := range entries {
 		for defIdx, definition := range entry.Definitions {
-			entries[idx].Definitions[defIdx] = strings.Replace(definition, "&quot;", "\"", -1)
+			entries[idx].Definitions[defIdx] = formatMalformatted(definition)
+		}
+		for altIdx, alternativeForm := range entry.AlternativeForms {
+			entries[idx].AlternativeForms[altIdx] = formatMalformatted(alternativeForm)
 		}
 	}
 
