@@ -32,6 +32,32 @@ func TestCreatesJsonBuild(t *testing.T) {
 	}
 }
 
+func TestCreatesMinifiedJsonBuild(t *testing.T) {
+	ToMinifiedJson()
+
+	// Minified JSON
+	_, err1 := os.Stat("./build/old-swedish-dictionary.min.json")
+	_, err2 := os.Stat("./build/old-swedish-dictionary-vol-i-to-iii.min.json")
+	_, err3 := os.Stat("./build/old-swedish-dictionary-vol-iv-to-v.min.json")
+	_, err4 := os.Stat("./build/old-swedish-medieval-law-dictionary.min.json")
+
+	if errors.Is(err1, os.ErrNotExist) {
+		t.Error("JSON output file not found in build directory for combined dictionary")
+	}
+
+	if errors.Is(err2, os.ErrNotExist) {
+		t.Error("JSON output file not found in build directory for Volumes I to III")
+	}
+
+	if errors.Is(err3, os.ErrNotExist) {
+		t.Error("JSON output file not found in build directory for Volumes IV to V")
+	}
+
+	if errors.Is(err4, os.ErrNotExist) {
+		t.Error("JSON output file not found in build directory for Schlyters Medieval Law dictionary")
+	}
+}
+
 func TestCreatesDSLBuild(t *testing.T) {
 	ToDsl()
 
