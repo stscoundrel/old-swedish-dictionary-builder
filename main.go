@@ -25,7 +25,18 @@ func ToDsl() {
 	writer.WriteDsl("build/old-swedish-medieval-law-dictionary.dsl", medievalLaw, "Dictionary of Old Swedish Law")
 }
 
+func ToMinifiedJson() {
+	combined, first, latter := dictionary.GetOldSwedishDictionary()
+	medievalLaw := dictionary.GetDictionaryOfOldSwedishLaw()
+
+	writer.WriteMinifiedJson("build/old-swedish-dictionary.min.json", combined)
+	writer.WriteMinifiedJson("build/old-swedish-dictionary-vol-i-to-iii.min.json", first)
+	writer.WriteMinifiedJson("build/old-swedish-dictionary-vol-iv-to-v.min.json", latter)
+	writer.WriteMinifiedJson("build/old-swedish-medieval-law-dictionary.min.json", medievalLaw)
+}
+
 func main() {
 	ToJson()
 	ToDsl()
+	ToMinifiedJson()
 }
