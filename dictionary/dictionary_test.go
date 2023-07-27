@@ -26,7 +26,7 @@ func TestDictionariesContainExpectedContent(t *testing.T) {
 		GrammaticalAspect: "v.",
 		Information:       "",
 		Definitions: []string{
-			"afbränna, genom eld förstöra. hans trähws the af brendhe  RK 2: 2757 . ib 1511. halff stadhen är affbrändh  BSH 5: 132 (  1506) . Jfr bränna af.",
+			"afbränna, genom eld förstöra. hans trähws the af brendhe  RK 2: 2757. ib 1511. halff stadhen är affbrändh  BSH 5: 132 (1506). Jfr bränna af.",
 		},
 		AlternativeForms: []string{},
 	}
@@ -37,7 +37,7 @@ func TestDictionariesContainExpectedContent(t *testing.T) {
 		GrammaticalAspect: "pl.",
 		Information:       "",
 		Definitions: []string{
-			"ålderdom.  \" tiill aller da[gha] \" MD (S) 242 . oppa sina aldher dagha  Lg 3: 650.",
+			"ålderdom. \" tiill aller da[gha]\" MD (S) 242. oppa sina aldher dagha  Lg 3: 650.",
 		},
 		AlternativeForms: []string{
 			"aller- )",

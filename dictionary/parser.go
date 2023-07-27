@@ -14,10 +14,22 @@ func parseRawDictionary(rawDictionary []byte) rawDictionaryEntries {
 
 func formatMalformatted(entryLine string) string {
 	formatted := entryLine
-	// Search-replace the problematic encoding.
+	// Search-replace the problematic encoding & odd spacings.
 	formatted = strings.Replace(formatted, "&quot;", "\"", -1)
+	formatted = strings.Replace(formatted, ". \" ", ". \"", -1)
+	formatted = strings.Replace(formatted, " \" ", "\" ", -1)
+	formatted = strings.Replace(formatted, ") . ", "). ", -1)
+	formatted = strings.Replace(formatted, " . ", ". ", -1)
 
-	// Trim trailing whitespaces & odd period structures.
+	// Oddly spaced opens & closes.
+	formatted = strings.Replace(formatted, "  ( ", " (", -1)
+	formatted = strings.Replace(formatted, "  ) ", ") ", -1)
+	formatted = strings.Replace(formatted, " (  ", " (", -1)
+	formatted = strings.Replace(formatted, " )  ", ") ", -1)
+	formatted = strings.Replace(formatted, " ( ", " (", -1)
+	formatted = strings.Replace(formatted, " ) ", ") ", -1)
+
+	// Trim trailing whitespaces & leftover period structures.
 	formatted = strings.TrimSpace(formatted)
 
 	// Trim oddly spaced periods.
