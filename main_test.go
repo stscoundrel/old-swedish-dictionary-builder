@@ -58,6 +58,32 @@ func TestCreatesMinifiedJsonBuild(t *testing.T) {
 	}
 }
 
+func TestCreatesGzippedJsonBuild(t *testing.T) {
+	ToCompressedJson()
+
+	// Compressed JSON
+	_, err1 := os.Stat("./build/old-swedish-dictionary.json.gz")
+	_, err2 := os.Stat("./build/old-swedish-dictionary-vol-i-to-iii.json.gz")
+	_, err3 := os.Stat("./build/old-swedish-dictionary-vol-iv-to-v.json.gz")
+	_, err4 := os.Stat("./build/old-swedish-medieval-law-dictionary.json.gz")
+
+	if errors.Is(err1, os.ErrNotExist) {
+		t.Error("GZIP JSON output file not found in build directory for combined dictionary")
+	}
+
+	if errors.Is(err2, os.ErrNotExist) {
+		t.Error("GZIP JSON output file not found in build directory for Volumes I to III")
+	}
+
+	if errors.Is(err3, os.ErrNotExist) {
+		t.Error("GZIP JSON output file not found in build directory for Volumes IV to V")
+	}
+
+	if errors.Is(err4, os.ErrNotExist) {
+		t.Error("GZIP JSON output file not found in build directory for Schlyters Medieval Law dictionary")
+	}
+}
+
 func TestCreatesDSLBuild(t *testing.T) {
 	ToDsl()
 
