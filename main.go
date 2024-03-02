@@ -35,8 +35,31 @@ func ToMinifiedJson() {
 	writer.WriteMinifiedJson("build/old-swedish-medieval-law-dictionary.min.json", medievalLaw)
 }
 
+func ToCompressedJson() {
+	combined, first, latter := dictionary.GetOldSwedishDictionary()
+	medievalLaw := dictionary.GetDictionaryOfOldSwedishLaw()
+
+	writer.WriteGzipJson("build/old-swedish-dictionary.json.gz", combined)
+	writer.WriteGzipJson("build/old-swedish-dictionary-vol-i-to-iii.json.gz", first)
+	writer.WriteGzipJson("build/old-swedish-dictionary-vol-iv-to-v.json.gz", latter)
+	writer.WriteGzipJson("build/old-swedish-medieval-law-dictionary.json.gz", medievalLaw)
+}
+
+func ToCompressedMinifiedJson() {
+	combined, first, latter := dictionary.GetOldSwedishDictionary()
+	medievalLaw := dictionary.GetDictionaryOfOldSwedishLaw()
+
+	writer.WriteMinifiedGzipJson("build/old-swedish-dictionary.min.json.gz", combined)
+	writer.WriteMinifiedGzipJson("build/old-swedish-dictionary-vol-i-to-iii.min.json.gz", first)
+	writer.WriteMinifiedGzipJson("build/old-swedish-dictionary-vol-iv-to-v.min.json.gz", latter)
+	writer.WriteMinifiedGzipJson("build/old-swedish-medieval-law-dictionary.min.json.gz", medievalLaw)
+
+}
+
 func main() {
 	ToJson()
 	ToDsl()
 	ToMinifiedJson()
+	ToCompressedJson()
+	ToCompressedMinifiedJson()
 }
